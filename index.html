@@ -2,18 +2,16 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="description" content="Toobit — криптобиржа с бонусом до $9210 для новых пользователей. Регистрация без KYC, работает в России 2026. Низкие комиссии, быстрый вывод." />
   <meta name="keywords" content="Toobit регистрация с бонусом, как пополнить Toobit в России 2026, биржи без KYC для РФ, Toobit отзывы и комиссии" />
   <meta name="robots" content="index, follow" />
   <title>Toobit — Бонус $9210 для новых пользователей | Биржа без KYC 2026</title>
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Toobit — Получи бонус $9210 прямо сейчас" />
   <meta property="og:description" content="Лучшая биржа для трейдеров из РФ. Без KYC, низкие комиссии, мгновенное пополнение." />
   <meta property="og:type" content="website" />
 
-  <!-- JSON-LD Schema: Product + AggregateRating для Яндекс-сниппета -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -51,7 +49,6 @@
   }
   </script>
 
-  <!-- FAQ Schema для Яндекс-сниппета -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -87,7 +84,7 @@
 
   <style>
     /* =============================================
-       CSS VARIABLES — единый источник истины темы
+       CSS VARIABLES
        ============================================= */
     :root {
       --bg-primary:      #0D0D0D;
@@ -117,9 +114,7 @@
        RESET & BASE
        ============================================= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       background-color: var(--bg-primary);
       color: var(--text-primary);
@@ -129,7 +124,7 @@
       overflow-x: hidden;
     }
 
-    /* Animated grain overlay — создаёт глубину и "дорогой" вид */
+    /* Animated grain overlay */
     body::before {
       content: '';
       position: fixed; inset: 0; z-index: 0;
@@ -137,7 +132,7 @@
       pointer-events: none; opacity: 0.4;
     }
 
-    /* Фоновая сетка — кибер-эстетика */
+    /* Background Grid */
     body::after {
       content: '';
       position: fixed; inset: 0; z-index: 0;
@@ -175,7 +170,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Glassmorphism card — базовый стиль для всех карточек */
+    /* Glassmorphism card */
     .glass-card {
       background: var(--bg-card);
       backdrop-filter: blur(18px) saturate(160%);
@@ -184,13 +179,12 @@
       border-radius: var(--radius-card);
       transition: border-color var(--transition), box-shadow var(--transition);
     }
-
     .glass-card:hover {
       border-color: var(--border-gold-hot);
       box-shadow: 0 0 32px var(--gold-glow-soft);
     }
 
-    /* Кнопка — главный элемент конверсии */
+    /* Buttons */
     .btn-gold {
       display: inline-flex;
       align-items: center;
@@ -211,8 +205,6 @@
       transition: transform var(--transition), box-shadow var(--transition);
       white-space: nowrap;
     }
-
-    /* "Ртутный" эффект наведения — ПФ: удерживает взгляд */
     .btn-gold::before {
       content: '';
       position: absolute;
@@ -231,6 +223,7 @@
     .btn-outline {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       padding: 12px 24px;
       border: 1px solid var(--border-gold-hot);
       color: var(--gold-1);
@@ -246,20 +239,18 @@
       box-shadow: 0 0 20px var(--gold-glow-soft);
     }
 
-    /* Scroll reveal — появление при скролле (ПФ: вовлекает пользователя) */
+    .btn-full { width: 100%; justify-content: center; pointer-events: none; }
+
+    /* Scroll reveal */
     .reveal {
       opacity: 0;
       transform: translateY(28px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* =============================================
        STICKY HEADER
-       ПФ: всегда видимая кнопка = моментальный конверт
        ============================================= */
     header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
@@ -269,7 +260,6 @@
       border-bottom: 0.5px solid var(--border-gold);
       transition: background 0.3s;
     }
-
     .header-inner {
       display: flex;
       align-items: center;
@@ -277,14 +267,18 @@
       height: 64px;
       gap: 16px;
     }
-
     .logo {
       font-family: var(--font-display);
       font-size: 1.8rem;
       letter-spacing: 0.08em;
     }
-
     .logo span { color: var(--gold-1); }
+
+    .main-nav {
+      display: flex; gap: 24px; font-size: 0.85rem; color: var(--text-secondary);
+    }
+    .main-nav a { transition: color 0.2s; }
+    .main-nav a:hover { color: var(--gold-1); }
 
     .header-cta .btn-gold {
       padding: 10px 22px;
@@ -292,7 +286,6 @@
       animation: pulseCta 2.8s ease-in-out infinite;
     }
 
-    /* Пульсация CTA — ПФ: привлекает взгляд, не даёт забыть о конверсии */
     @keyframes pulseCta {
       0%, 100% { box-shadow: 0 0 0 0 rgba(255,185,0,0.0); }
       50%       { box-shadow: 0 0 0 8px rgba(255,185,0,0.0), 0 4px 24px rgba(255,185,0,0.45); }
@@ -300,7 +293,6 @@
 
     /* =============================================
        TRUST BAR
-       ПФ: социальное доказательство сразу после хедера
        ============================================= */
     .trust-bar {
       margin-top: 64px;
@@ -310,7 +302,6 @@
       overflow: hidden;
       position: relative;
     }
-
     .trust-bar-inner {
       display: flex;
       align-items: center;
@@ -318,599 +309,232 @@
       width: max-content;
       animation: marquee 28s linear infinite;
     }
-
     @keyframes marquee {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-
     .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      display: flex; align-items: center; gap: 8px;
+      white-space: nowrap; font-size: 0.82rem; font-weight: 600;
+      color: var(--text-secondary); letter-spacing: 0.04em; text-transform: uppercase;
     }
-
     .trust-item .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--neon-green);
-      box-shadow: 0 0 8px var(--neon-green);
-      flex-shrink: 0;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--neon-green); box-shadow: 0 0 8px var(--neon-green); flex-shrink: 0;
     }
-
     .trust-item.highlight { color: var(--gold-1); }
 
     /* =============================================
        HERO
        ============================================= */
     .hero {
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
-      padding: 80px 0 60px;
-      position: relative;
-      overflow: hidden;
+      min-height: calc(100svh - 64px);
+      display: flex; align-items: center;
+      padding: 80px 0 60px; position: relative; overflow: hidden;
     }
-
-    /* Золотая «аура» позади главного контента — ПФ: фокусирует взгляд */
     .hero::before {
-      content: '';
-      position: absolute;
-      top: 10%; left: 50%;
-      transform: translateX(-50%);
-      width: 800px; height: 600px;
+      content: ''; position: absolute; top: 10%; left: 50%;
+      transform: translateX(-50%); width: 800px; height: 600px;
       background: radial-gradient(ellipse at center, rgba(255,185,0,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
-
     .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
     }
-
     .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: rgba(0,255,156,0.08);
-      border: 0.5px solid rgba(0,255,156,0.3);
-      border-radius: 50px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--neon-green);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; background: rgba(0,255,156,0.08);
+      border: 0.5px solid rgba(0,255,156,0.3); border-radius: 50px;
+      font-size: 0.78rem; font-weight: 600; color: var(--neon-green);
+      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px;
     }
-
     .hero-eyebrow::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--neon-green);
-      box-shadow: 0 0 8px var(--neon-green);
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--neon-green); box-shadow: 0 0 8px var(--neon-green);
     }
-
     .hero h1 {
       font-family: var(--font-display);
       font-size: clamp(3rem, 6vw, 5.5rem);
-      line-height: 0.95;
-      letter-spacing: 0.02em;
-      margin-bottom: 24px;
+      line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 24px;
     }
-
     .hero-sub {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      max-width: 460px;
-      margin-bottom: 36px;
+      font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;
+      max-width: 460px; margin-bottom: 36px;
     }
-
     .hero-sub strong { color: var(--text-primary); }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 40px;
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 32px;
-    }
-
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+    .hero-stats { display: flex; gap: 32px; }
     .stat-item { display: flex; flex-direction: column; gap: 2px; }
-
-    .stat-value {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      line-height: 1;
-      letter-spacing: 0.04em;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
+    .stat-value { font-family: var(--font-display); font-size: 1.8rem; line-height: 1; letter-spacing: 0.04em; }
+    .stat-label { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em; }
 
     /* =============================================
        INTERACTIVE BONUS CARD
-       ПФ: главный магнит конверсии — визуально доминирует
        ============================================= */
-    .bonus-card-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
+    .bonus-card-wrap { display: flex; justify-content: center; align-items: center; }
     .bonus-card {
-      width: 100%;
-      max-width: 400px;
-      padding: 40px 32px;
-      text-align: center;
-      position: relative;
-      cursor: pointer;
-      /* Glassmorphism */
-      background: rgba(255,200,50,0.05);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border: 0.5px solid var(--border-gold);
-      border-radius: 24px;
-      transition: all var(--transition);
+      width: 100%; max-width: 400px; padding: 40px 32px; text-align: center;
+      position: relative; cursor: pointer; background: rgba(255,200,50,0.05);
+      backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 0.5px solid var(--border-gold); border-radius: 24px; transition: all var(--transition);
     }
-
-    /* Свечение при наведении — ПФ: интерактивность удерживает */
     .bonus-card:hover {
       border-color: var(--gold-1);
-      box-shadow:
-        0 0 60px rgba(255,185,0,0.25),
-        0 0 120px rgba(255,185,0,0.10),
-        inset 0 0 40px rgba(255,185,0,0.05);
+      box-shadow: 0 0 60px rgba(255,185,0,0.25), 0 0 120px rgba(255,185,0,0.10), inset 0 0 40px rgba(255,185,0,0.05);
       transform: translateY(-4px);
     }
-
     .bonus-card::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: 25px;
+      content: ''; position: absolute; inset: -1px; border-radius: 25px;
       background: linear-gradient(135deg, var(--gold-1), transparent, var(--gold-3));
-      opacity: 0;
-      z-index: -1;
-      transition: opacity var(--transition);
+      opacity: 0; z-index: -1; transition: opacity var(--transition);
     }
     .bonus-card:hover::before { opacity: 0.18; }
-
     .card-badge {
-      display: inline-block;
-      padding: 5px 14px;
-      background: rgba(0,255,156,0.12);
-      border: 0.5px solid rgba(0,255,156,0.4);
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--neon-green);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
+      display: inline-block; padding: 5px 14px; background: rgba(0,255,156,0.12);
+      border: 0.5px solid rgba(0,255,156,0.4); border-radius: 50px; font-size: 0.75rem;
+      font-weight: 700; color: var(--neon-green); letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 18px;
     }
-
-    .card-logo {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      letter-spacing: 0.12em;
-      margin-bottom: 8px;
-    }
-
+    .card-logo { font-family: var(--font-display); font-size: 2.2rem; letter-spacing: 0.12em; margin-bottom: 8px; }
     .card-logo span { color: var(--gold-1); }
-
+    .card-subtitle { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 4px; letter-spacing: 0.06em; }
     .bonus-amount {
-      font-family: var(--font-display);
-      font-size: 5rem;
-      line-height: 1;
-      letter-spacing: 0.02em;
-      margin: 8px 0 4px;
-      transition: text-shadow var(--transition), transform var(--transition);
+      font-family: var(--font-display); font-size: 5rem; line-height: 1;
+      letter-spacing: 0.02em; margin: 8px 0 4px; transition: text-shadow var(--transition), transform var(--transition);
     }
-
-    /* ПФ: при наведении сумма «загорается» золотым неоном */
     .bonus-card:hover .bonus-amount {
-      text-shadow: 0 0 40px rgba(255,185,0,0.8), 0 0 80px rgba(255,185,0,0.4);
-      transform: scale(1.06);
+      text-shadow: 0 0 40px rgba(255,185,0,0.8), 0 0 80px rgba(255,185,0,0.4); transform: scale(1.06);
     }
-
-    .bonus-sub {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      margin-bottom: 28px;
-      letter-spacing: 0.04em;
-    }
-
-    .card-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 28px;
-      text-align: left;
-    }
-
-    .card-features li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-    }
-
-    .card-features li::before {
-      content: '✦';
-      color: var(--gold-1);
-      font-size: 0.65rem;
-      flex-shrink: 0;
-    }
-
+    .bonus-sub { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 28px; letter-spacing: 0.04em; }
+    .card-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; text-align: left; }
+    .card-features li { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--text-secondary); }
+    .card-features li::before { content: '✦'; color: var(--gold-1); font-size: 0.65rem; flex-shrink: 0; }
     .card-features li strong { color: var(--text-primary); }
-
-    .card-timer {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      margin-top: 16px;
-    }
-
+    .card-timer { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.78rem; color: var(--text-secondary); margin-top: 16px; }
     .timer-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #FF4444;
-      box-shadow: 0 0 8px #FF4444;
-      animation: blink 1s ease-in-out infinite;
+      width: 6px; height: 6px; border-radius: 50%; background: #FF4444;
+      box-shadow: 0 0 8px #FF4444; animation: blink 1s ease-in-out infinite;
     }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0.2; }
-    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 
     /* =============================================
        HOW IT WORKS
        ============================================= */
     .section { padding: 100px 0; position: relative; }
-
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold-2);
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4vw, 3.4rem);
-      line-height: 1.05;
-      letter-spacing: 0.03em;
-      margin-bottom: 16px;
-    }
-
-    .section-desc {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      max-width: 520px;
-      line-height: 1.7;
-      margin-bottom: 60px;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .step-card {
-      padding: 32px 28px;
-      position: relative;
-    }
-
-    .step-number {
-      font-family: var(--font-display);
-      font-size: 4rem;
-      line-height: 1;
-      letter-spacing: 0.04em;
-      color: rgba(255,200,50,0.12);
-      margin-bottom: 16px;
-      transition: color var(--transition);
-    }
-
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-2); margin-bottom: 12px; }
+    .section-title { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 1.05; letter-spacing: 0.03em; margin-bottom: 16px; }
+    .section-desc { font-size: 1rem; color: var(--text-secondary); max-width: 520px; line-height: 1.7; margin-bottom: 60px; }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .step-card { padding: 32px 28px; position: relative; }
+    .step-number { font-family: var(--font-display); font-size: 4rem; line-height: 1; letter-spacing: 0.04em; color: rgba(255,200,50,0.12); margin-bottom: 16px; transition: color var(--transition); }
     .step-card:hover .step-number { color: rgba(255,200,50,0.35); }
-
-    .step-icon {
-      font-size: 1.8rem;
-      margin-bottom: 14px;
-    }
-
-    .step-title {
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 8px;
-    }
-
-    .step-desc {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
+    .step-icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .step-title { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+    .step-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
 
     /* =============================================
        FEATURES / WHY TOOBIT
        ============================================= */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .feature-card {
-      padding: 28px;
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
+    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .feature-card { padding: 28px; display: flex; gap: 20px; align-items: flex-start; }
     .feature-icon {
-      font-size: 1.6rem;
-      width: 48px; height: 48px;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--gold-glow-soft);
-      border-radius: 12px;
-      border: 0.5px solid var(--border-gold);
-      flex-shrink: 0;
+      font-size: 1.6rem; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+      background: var(--gold-glow-soft); border-radius: 12px; border: 0.5px solid var(--border-gold); flex-shrink: 0;
     }
-
-    .feature-title {
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 6px;
-    }
-
-    .feature-desc {
-      font-size: 0.84rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
+    .feature-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
+    .feature-desc { font-size: 0.84rem; color: var(--text-secondary); line-height: 1.6; }
 
     /* =============================================
        REVIEWS
        ============================================= */
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .review-card { padding: 28px; }
-
-    .review-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
+    .review-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
     .review-avatar {
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 0.9rem;
-      color: #0D0D0D;
-      flex-shrink: 0;
+      width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
+      display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;
+      color: #0D0D0D; flex-shrink: 0;
     }
-
     .review-name { font-weight: 600; font-size: 0.92rem; }
     .review-date { font-size: 0.75rem; color: var(--text-secondary); }
-
     .review-stars { color: var(--gold-1); font-size: 0.85rem; margin-bottom: 10px; }
-
-    .review-text {
-      font-size: 0.86rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
-    }
-
+    .review-text { font-size: 0.86rem; color: var(--text-secondary); line-height: 1.65; }
     .review-tag {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 3px 10px;
-      background: var(--gold-glow-soft);
-      border-radius: 50px;
-      font-size: 0.72rem;
-      color: var(--gold-2);
-      font-weight: 600;
+      display: inline-block; margin-top: 12px; padding: 3px 10px; background: var(--gold-glow-soft);
+      border-radius: 50px; font-size: 0.72rem; color: var(--gold-2); font-weight: 600;
     }
 
     /* =============================================
        FAQ
-       ПФ: снижает барьеры принятия решения, улучшает ПФ (время на сайте)
        ============================================= */
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .faq-item {
-      border: 0.5px solid var(--border-gold);
-      border-radius: 14px;
-      overflow: hidden;
-      transition: border-color var(--transition);
-    }
-
+    .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 800px; margin: 0 auto; }
+    .faq-item { border: 0.5px solid var(--border-gold); border-radius: 14px; overflow: hidden; transition: border-color var(--transition); }
     .faq-item.open { border-color: var(--border-gold-hot); }
-
     .faq-question {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 20px 24px;
-      background: var(--bg-card);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-align: left;
-      color: var(--text-primary);
-      border: none;
-      transition: background var(--transition);
+      width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 20px 24px; background: var(--bg-card); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      cursor: pointer; font-weight: 600; font-size: 0.95rem; text-align: left; color: var(--text-primary);
+      border: none; transition: background var(--transition);
     }
-
     .faq-question:hover { background: rgba(255,200,50,0.05); }
-
     .faq-icon {
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      border: 0.5px solid var(--border-gold);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; color: var(--gold-1);
-      transition: transform var(--transition), background var(--transition);
-      flex-shrink: 0;
+      width: 28px; height: 28px; border-radius: 50%; border: 0.5px solid var(--border-gold);
+      display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--gold-1);
+      transition: transform var(--transition), background var(--transition); flex-shrink: 0;
     }
-
-    .faq-item.open .faq-icon {
-      transform: rotate(45deg);
-      background: var(--gold-glow-soft);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.45s cubic-bezier(0.22,1,0.36,1), padding 0.3s;
-      background: rgba(255,200,50,0.02);
-    }
-
-    .faq-item.open .faq-answer { max-height: 240px; }
-
-    .faq-answer-inner {
-      padding: 0 24px 20px;
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--gold-glow-soft); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.22,1,0.36,1), padding 0.3s; background: rgba(255,200,50,0.02); }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer-inner { padding: 0 24px 20px; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
 
     /* =============================================
        CTA BANNER FINAL
        ============================================= */
-    .cta-banner {
-      padding: 80px 0;
-    }
-
+    .cta-banner { padding: 80px 0; }
     .cta-inner {
-      text-align: center;
-      padding: 60px 40px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 28px;
-      background: linear-gradient(135deg, rgba(255,185,0,0.08), rgba(255,140,0,0.04));
+      text-align: center; padding: 60px 40px; position: relative; overflow: hidden;
+      border-radius: 28px; background: linear-gradient(135deg, rgba(255,185,0,0.08), rgba(255,140,0,0.04));
       border: 0.5px solid var(--border-gold);
     }
-
     .cta-inner::before {
-      content: '';
-      position: absolute;
-      top: -60%; left: 50%;
-      transform: translateX(-50%);
-      width: 600px; height: 400px;
-      background: radial-gradient(ellipse, rgba(255,185,0,0.1) 0%, transparent 65%);
+      content: ''; position: absolute; top: -60%; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(255,185,0,0.1) 0%, transparent 65%);
       pointer-events: none;
     }
-
-    .cta-inner h2 {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      letter-spacing: 0.03em;
-      margin-bottom: 14px;
-    }
-
-    .cta-inner p {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      margin-bottom: 36px;
-      max-width: 500px;
-      margin-left: auto; margin-right: auto;
-    }
-
-    .cta-disclaimer {
-      margin-top: 20px;
-      font-size: 0.75rem;
-      color: rgba(154,150,144,0.6);
-    }
+    .cta-inner h2 { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4rem); letter-spacing: 0.03em; margin-bottom: 14px; }
+    .cta-inner p { font-size: 1rem; color: var(--text-secondary); margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-disclaimer { margin-top: 20px; font-size: 0.75rem; color: rgba(154,150,144,0.6); }
 
     /* =============================================
        FOOTER
        ============================================= */
-    footer {
-      border-top: 0.5px solid var(--border-gold);
-      padding: 40px 0 28px;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .footer-logo {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-    }
-
+    footer { border-top: 0.5px solid var(--border-gold); padding: 40px 0 28px; }
+    .footer-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .footer-logo { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: 0.08em; margin-bottom: 8px; }
     .footer-logo span { color: var(--gold-1); }
-
-    .footer-desc {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      max-width: 260px;
-      line-height: 1.6;
-    }
+    .footer-desc { font-size: 0.82rem; color: var(--text-secondary); max-width: 260px; line-height: 1.6; }
+    
+    .footer-nav { display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: var(--text-secondary); }
+    .footer-nav a { transition: color 0.2s; }
+    .footer-nav a:hover { color: var(--gold-1); }
 
     .footer-disclaimer {
-      font-size: 0.72rem;
-      color: rgba(154,150,144,0.5);
-      max-width: 780px;
-      line-height: 1.6;
-      margin-top: 28px;
-      padding-top: 20px;
-      border-top: 0.5px solid rgba(255,200,50,0.08);
+      font-size: 0.72rem; color: rgba(154,150,144,0.5); max-width: 780px; line-height: 1.6;
+      margin-top: 28px; padding-top: 20px; border-top: 0.5px solid rgba(255,200,50,0.08);
     }
 
     /* =============================================
-       RESPONSIVE — Mobile-First 2026
+       SCROLL PROGRESS BAR
+       ============================================= */
+    .progress-bar {
+      position: fixed; top: 64px; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold-1), var(--gold-3));
+      transform-origin: left; transform: scaleX(0); z-index: 999;
+      box-shadow: 0 0 10px var(--gold-glow);
+    }
+
+    /* =============================================
+       RESPONSIVE — MOBILE OPTIMIZATION
        ============================================= */
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -920,72 +544,61 @@
       .reviews-grid { grid-template-columns: 1fr; }
     }
 
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 2.6rem; }
-      .hero-stats { gap: 20px; flex-wrap: wrap; }
-      .header-inner { gap: 10px; }
-      .logo { font-size: 1.4rem; }
-      .bonus-amount { font-size: 3.6rem; }
-      .cta-inner { padding: 40px 20px; }
-      .footer-inner { flex-direction: column; }
+    @media (max-width: 768px) {
+      .main-nav { display: none; } /* Скрываем текстовое меню на смартфонах ради конверсионной кнопки */
+      .hero { padding: 60px 0 40px; }
+      .hero-buttons { flex-direction: column; width: 100%; }
+      .hero-buttons .btn-gold, .hero-buttons .btn-outline { width: 100%; text-align: center; }
       .section { padding: 60px 0; }
+      .bonus-card { padding: 30px 20px; }
+      .cta-banner { padding: 60px 0; }
     }
 
-    /* Container queries для складных устройств */
-    @container (min-width: 600px) {
-      .steps-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    .steps-wrap { container-type: inline-size; }
-
-    /* =============================================
-       SCROLL PROGRESS BAR
-       ============================================= */
-    .progress-bar {
-      position: fixed;
-      top: 64px; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--gold-1), var(--gold-3));
-      transform-origin: left;
-      transform: scaleX(0);
-      z-index: 999;
-      box-shadow: 0 0 10px var(--gold-glow);
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero-sub { font-size: 0.95rem; }
+      .hero-stats { gap: 16px; justify-content: space-between; width: 100%; }
+      .stat-value { font-size: 1.4rem; }
+      .header-inner { gap: 8px; }
+      .logo { font-size: 1.3rem; }
+      .header-cta .btn-gold { padding: 8px 16px; font-size: 0.8rem; }
+      .bonus-amount { font-size: 3.2rem; }
+      .step-card, .feature-card, .review-card { padding: 20px; }
+      .cta-inner { padding: 40px 16px; }
+      .cta-inner h2 { font-size: 2.2rem; }
+      .cta-inner .btn-gold { width: 100%; padding: 16px 20px; font-size: 1rem; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 30px; }
+      .footer-nav { align-items: center; }
+      .trust-bar-inner { gap: 24px; }
+      .trust-item { font-size: 0.75rem; }
+      .faq-question { padding: 16px 20px; font-size: 0.9rem; }
+      .faq-answer-inner { padding: 0 20px 16px; font-size: 0.85rem; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Прогресс-бар чтения — ПФ: мотивирует дочитать страницу -->
   <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
 
-  <!-- ================================================
-       STICKY HEADER
-       ПФ: кнопка-конверсия всегда в зоне видимости
-       ================================================ -->
   <header role="banner">
     <div class="container header-inner">
       <div class="logo">TOO<span>BIT</span></div>
-      <nav aria-label="Основная навигация" style="display:flex;gap:24px;font-size:0.85rem;color:var(--text-secondary);">
-        <a href="#how-it-works" style="transition:color 0.2s" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color=''">Как это работает</a>
-        <a href="#reviews" style="transition:color 0.2s" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color=''">Отзывы</a>
-        <a href="#faq" style="transition:color 0.2s" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color=''">FAQ</a>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="#how-it-works">Как это работает</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#faq">FAQ</a>
       </nav>
       <div class="header-cta">
         <a href="https://www.toobit.com/ru-RU/r?i=7lXOpQ" class="btn-gold" target="_blank" rel="noopener sponsored"
            aria-label="Зарегистрироваться на Toobit и получить бонус $9210">
-          🎁 Забрать $9210 Бонус
+          🎁 Забрать $9210
         </a>
       </div>
     </div>
   </header>
 
-  <!-- ================================================
-       TRUST BAR
-       ПФ: первое, что видит пользователь — доверие и актуальность
-       ================================================ -->
   <aside class="trust-bar" aria-label="Подтверждения надёжности">
     <div class="trust-bar-inner" aria-hidden="true">
-      <!-- Дублируем для бесконечной прокрутки -->
       <div class="trust-item highlight"><span class="dot"></span>Проверено: Работает в РФ 2026</div>
       <div class="trust-item">⚡ Вывод за 5 минут</div>
       <div class="trust-item">🔒 Без KYC до 50 000 USDT</div>
@@ -994,7 +607,6 @@
       <div class="trust-item">📱 P2P в рублях</div>
       <div class="trust-item">🌐 Русский интерфейс</div>
       <div class="trust-item">⚖️ Лицензия Seychelles FSA</div>
-      <!-- Дубль -->
       <div class="trust-item highlight"><span class="dot"></span>Проверено: Работает в РФ 2026</div>
       <div class="trust-item">⚡ Вывод за 5 минут</div>
       <div class="trust-item">🔒 Без KYC до 50 000 USDT</div>
@@ -1007,14 +619,9 @@
   </aside>
 
   <main>
-    <!-- ================================================
-         HERO
-         ================================================ -->
     <section class="hero" aria-labelledby="hero-heading">
       <div class="container">
         <div class="hero-grid">
-
-          <!-- Левая колонка — текст -->
           <div class="hero-content">
             <div class="hero-eyebrow">Только по реф-ссылке</div>
             <h1 id="hero-heading">
@@ -1026,11 +633,7 @@
               <strong>Toobit регистрация с бонусом</strong> — самый простой способ начать торговать криптой из России в 2026 году. Без VPN, без KYC, с P2P в рублях.
             </p>
             <div class="hero-buttons">
-              <a href="https://www.toobit.com/ru-RU/r?i=7lXOpQ"
-                 class="btn-gold"
-                 target="_blank"
-                 rel="noopener sponsored"
-                 aria-label="Получить бонус $9210 на Toobit">
+              <a href="https://www.toobit.com/ru-RU/r?i=7lXOpQ" class="btn-gold" target="_blank" rel="noopener sponsored" aria-label="Получить бонус $9210 на Toobit">
                 🚀 Получить Бонус — Бесплатно
               </a>
               <a href="#how-it-works" class="btn-outline">Как это работает</a>
@@ -1051,48 +654,30 @@
             </div>
           </div>
 
-          <!-- Правая колонка — интерактивная Bonus Card -->
-          <!-- ПФ: интерактивная карточка удерживает внимание и провоцирует клик -->
           <div class="bonus-card-wrap">
-            <a href="https://www.toobit.com/ru-RU/r?i=7lXOpQ"
-               class="bonus-card"
-               target="_blank"
-               rel="noopener sponsored"
-               aria-label="Зарегистрироваться на Toobit и получить бонус до 9210 долларов"
-               id="bonusCard">
-
+            <a href="https://www.toobit.com/ru-RU/r?i=7lXOpQ" class="bonus-card" target="_blank" rel="noopener sponsored" aria-label="Зарегистрироваться на Toobit и получить бонус до 9210 долларов" id="bonusCard">
               <div class="card-badge">🟢 Акция активна · РФ 2026</div>
               <div class="card-logo">TOO<span>BIT</span></div>
-              <p style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:4px;letter-spacing:0.06em;">ПРИВЕТСТВЕННЫЙ ПАКЕТ</p>
-
+              <p class="card-subtitle">ПРИВЕТСТВЕННЫЙ ПАКЕТ</p>
               <div class="bonus-amount gold-text" id="bonusCounter">$9210</div>
               <p class="bonus-sub">для новых пользователей по реф-ссылке</p>
-
               <ul class="card-features">
                 <li><strong>Без KYC</strong> — торгуй анонимно</li>
                 <li><strong>P2P в рублях</strong> — как пополнить Toobit в России 2026</li>
                 <li><strong>Toobit комиссии 0.1%</strong> — ниже Binance</li>
                 <li><strong>Вывод</strong> — 5–15 минут на любой кошелёк</li>
               </ul>
-
-              <div class="btn-gold" style="width:100%;justify-content:center;pointer-events:none;">
-                Забрать Бонус →
-              </div>
-
+              <div class="btn-gold btn-full">Забрать Бонус →</div>
               <div class="card-timer">
                 <span class="timer-dot"></span>
                 Осталось мест: <strong id="slotsLeft" style="color:var(--gold-1);">47</strong>
               </div>
             </a>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ================================================
-         HOW IT WORKS
-         ================================================ -->
     <section class="section" id="how-it-works" aria-labelledby="steps-heading">
       <div class="container">
         <p class="section-label reveal">Просто и быстро</p>
@@ -1102,7 +687,7 @@
         <p class="section-desc reveal">
           Весь процесс занимает меньше 3 минут. Никаких документов, никакого VPN — биржи без KYC для РФ работают именно так.
         </p>
-        <div class="steps-grid steps-wrap">
+        <div class="steps-grid">
           <article class="step-card glass-card reveal">
             <div class="step-number">01</div>
             <div class="step-icon">🔗</div>
@@ -1125,9 +710,6 @@
       </div>
     </section>
 
-    <!-- ================================================
-         WHY TOOBIT — FEATURES
-         ================================================ -->
     <section class="section" aria-labelledby="features-heading">
       <div class="container">
         <p class="section-label reveal">Почему выбирают Toobit</p>
@@ -1181,10 +763,6 @@
       </div>
     </section>
 
-    <!-- ================================================
-         REVIEWS
-         ПФ: реальные отзывы — ключевой элемент доверия
-         ================================================ -->
     <section class="section" id="reviews" aria-labelledby="reviews-heading">
       <div class="container">
         <p class="section-label reveal">Мнения пользователей</p>
@@ -1238,10 +816,6 @@
       </div>
     </section>
 
-    <!-- ================================================
-         FAQ
-         ПФ: снимает возражения, увеличивает время на сайте
-         ================================================ -->
     <section class="section" id="faq" aria-labelledby="faq-heading">
       <div class="container">
         <p class="section-label reveal" style="text-align:center;">Ответы на вопросы</p>
@@ -1249,7 +823,6 @@
           Часто задаваемые<br><span class="gold-text">вопросы о Toobit</span>
         </h2>
         <div class="faq-list" role="list">
-
           <div class="faq-item reveal" role="listitem">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
               <span>Как пополнить Toobit в России 2026?</span>
@@ -1261,7 +834,6 @@
               </div>
             </div>
           </div>
-
           <div class="faq-item reveal" role="listitem">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
               <span>Нужен ли KYC на Toobit для вывода?</span>
@@ -1273,7 +845,6 @@
               </div>
             </div>
           </div>
-
           <div class="faq-item reveal" role="listitem">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
               <span>Какие реальные комиссии на Toobit?</span>
@@ -1285,7 +856,6 @@
               </div>
             </div>
           </div>
-
           <div class="faq-item reveal" role="listitem">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
               <span>Как получить бонус $9210 на Toobit?</span>
@@ -1297,7 +867,6 @@
               </div>
             </div>
           </div>
-
           <div class="faq-item reveal" role="listitem">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
               <span>Toobit — мошенники или надёжная биржа?</span>
@@ -1309,15 +878,10 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ================================================
-         FINAL CTA BANNER
-         ПФ: последний шанс конверсии перед уходом
-         ================================================ -->
     <section class="cta-banner" aria-labelledby="cta-heading">
       <div class="container">
         <div class="cta-inner reveal">
@@ -1325,12 +889,7 @@
             НАЧНИ ТОРГОВАТЬ<br><span class="gold-text">С БОНУСОМ $9210</span>
           </h2>
           <p>Toobit регистрация с бонусом занимает 3 минуты. Работает в России 2026 — без VPN, без KYC.</p>
-          <a href="https://www.toobit.com/ru-RU/r?i=7lXOpQ"
-             class="btn-gold"
-             target="_blank"
-             rel="noopener sponsored"
-             style="font-size:1.05rem;padding:18px 44px;"
-             aria-label="Зарегистрироваться на Toobit и получить бонус $9210">
+          <a href="https://www.toobit.com/ru-RU/r?i=7lXOpQ" class="btn-gold" target="_blank" rel="noopener sponsored" aria-label="Зарегистрироваться на Toobit и получить бонус $9210">
             🚀 Получить Бонус $9210 — Бесплатно
           </a>
           <p class="cta-disclaimer">
@@ -1339,12 +898,8 @@
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- ================================================
-       FOOTER
-       ================================================ -->
   <footer role="contentinfo">
     <div class="container">
       <div class="footer-inner">
@@ -1352,10 +907,10 @@
           <div class="footer-logo">TOO<span>BIT</span></div>
           <p class="footer-desc">Независимый обзорный сайт. Мы получаем комиссию за регистрации по реф-ссылке.</p>
         </div>
-        <div style="display:flex;flex-direction:column;gap:10px;font-size:0.85rem;color:var(--text-secondary);">
-          <a href="#how-it-works" style="transition:color 0.2s" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color=''">Как это работает</a>
-          <a href="#reviews" style="transition:color 0.2s" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color=''">Отзывы</a>
-          <a href="#faq" style="transition:color 0.2s" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color=''">FAQ</a>
+        <div class="footer-nav">
+          <a href="#how-it-works">Как это работает</a>
+          <a href="#reviews">Отзывы</a>
+          <a href="#faq">FAQ</a>
           <a href="https://www.toobit.com/ru-RU/r?i=7lXOpQ" target="_blank" rel="noopener" style="color:var(--gold-1)">Зарегистрироваться →</a>
         </div>
       </div>
@@ -1365,12 +920,7 @@
     </div>
   </footer>
 
-
   <script>
-    // ================================================
-    // SCROLL PROGRESS BAR
-    // ПФ: геймификация чтения — пользователь видит прогресс
-    // ================================================
     const progressBar = document.getElementById('progressBar');
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
@@ -1379,14 +929,9 @@
       progressBar.style.transform = `scaleX(${progress})`;
     }, { passive: true });
 
-    // ================================================
-    // SCROLL REVEAL
-    // ПФ: анимированное появление удерживает внимание при скролле
-    // ================================================
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          // Stagger delay для последовательного появления
           const siblings = entry.target.parentElement.querySelectorAll('.reveal');
           let delay = 0;
           siblings.forEach((el, idx) => {
@@ -1402,22 +947,16 @@
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // ================================================
-    // FAQ ACCORDION
-    // ПФ: интерактивность повышает вовлечённость и время на сайте
-    // ================================================
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.closest('.faq-item');
         const isOpen = item.classList.contains('open');
 
-        // Закрываем все
         document.querySelectorAll('.faq-item').forEach(i => {
           i.classList.remove('open');
           i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
         });
 
-        // Открываем нужный
         if (!isOpen) {
           item.classList.add('open');
           btn.setAttribute('aria-expanded', 'true');
@@ -1425,10 +964,6 @@
       });
     });
 
-    // ================================================
-    // FAKE SLOTS COUNTER
-    // ПФ: дефицит + срочность = FOMO, ускоряет конверсию
-    // ================================================
     const slotsEl = document.getElementById('slotsLeft');
     if (slotsEl) {
       let slots = 47;
@@ -1436,7 +971,6 @@
         if (slots > 12 && Math.random() < 0.15) {
           slots = Math.max(12, slots - 1);
           slotsEl.textContent = slots;
-          // Кратковременная анимация изменения числа
           slotsEl.style.transform = 'scale(1.3)';
           slotsEl.style.color = '#FF4444';
           setTimeout(() => {
@@ -1447,15 +981,12 @@
       }, 8000);
     }
 
-    // ================================================
-    // BONUS AMOUNT COUNTER ANIMATION on hover
-    // ПФ: анимация числа при наведении привлекает внимание к размеру бонуса
-    // ================================================
     const bonusCard = document.getElementById('bonusCard');
     const bonusCounter = document.getElementById('bonusCounter');
     if (bonusCard && bonusCounter) {
       let isAnimating = false;
-      bonusCard.addEventListener('mouseenter', () => {
+      // Используем touchstart для мобильных устройств
+      const startAnimation = () => {
         if (isAnimating) return;
         isAnimating = true;
         const target = 9210;
@@ -1469,13 +1000,12 @@
             isAnimating = false;
           }
         }, 16);
-      });
+      };
+      
+      bonusCard.addEventListener('mouseenter', startAnimation);
+      bonusCard.addEventListener('touchstart', startAnimation, { passive: true });
     }
 
-    // ================================================
-    // SMOOTH HEADER BACKGROUND on scroll
-    // ПФ: профессиональный вид = доверие
-    // ================================================
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 10) {
